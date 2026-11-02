@@ -10,6 +10,15 @@ class Shop {
     required this.displayName,
     required this.address,
     required this.funds,
-    required this.allocatedPoints
+    required this.allocatedPoints 
   });
+
+  factory Shop.fromJson(Map<String, dynamic> json) {
+    return Shop(
+      id: json['id'] as String,
+      displayName: json['displayName'] as String,
+      address: json['address'] as String, 
+      funds: (json['funds'] as num).toDouble(),
+      allocatedPoints: json['allocatedPoints'] as int);
+  }
 }
