@@ -29,4 +29,20 @@ class Shop {
     'funds': funds,
     'allocatedPoints': allocatedPoints
   };
+
+  Shop copyWith({
+    String? id,
+    String? displayName,
+    String? address,
+    double? funds,
+    int? allocatedPoints
+  }) {
+    return Shop(
+      id: id ?? this.id,
+      displayName: displayName ?? this.displayName,
+      address: address ?? this.address,
+      funds: funds ?? this.funds,
+      allocatedPoints: allocatedPoints ?? this.allocatedPoints
+    );
+  }
 }
