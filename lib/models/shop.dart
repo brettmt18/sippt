@@ -1,25 +1,25 @@
 class Shop {
-  final String id;
+  final String? id;
   final String displayName;
   final String address;
-  final double funds;
-  final int allocatedPoints;
+  final double? funds;
+  final int? allocatedPoints;
 
   const Shop({
-    required this.id,
+    this.id,
     required this.displayName,
     required this.address,
-    required this.funds,
-    required this.allocatedPoints 
+    this.funds,
+    this.allocatedPoints 
   });
 
   factory Shop.fromJson(Map<String, dynamic> json) {
     return Shop(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       displayName: json['displayName'] as String,
       address: json['address'] as String, 
-      funds: ((json['funds'] ?? 0 )as num).toDouble(),
-      allocatedPoints: ((json['allocatedPoints'] ?? 0) as num).toInt()
+      funds: ((json['funds']) as num?)?.toDouble(),
+      allocatedPoints: ((json['allocatedPoints']) as num?)?.toInt()
     );
   }
 
@@ -45,5 +45,10 @@ class Shop {
       funds: funds ?? this.funds,
       allocatedPoints: allocatedPoints ?? this.allocatedPoints
     );
+  }
+
+  @override
+  String toString() {
+    return 'Shop(id: $id, displayName: "$displayName", address: "$address", funds: $funds, allocatedPoints: $allocatedPoints)';
   }
 }
