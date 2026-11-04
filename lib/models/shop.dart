@@ -18,8 +18,9 @@ class Shop {
       id: json['id'] as String,
       displayName: json['displayName'] as String,
       address: json['address'] as String, 
-      funds: (json['funds'] as num).toDouble(),
-      allocatedPoints: json['allocatedPoints'] as int);
+      funds: ((json['funds'] ?? 0 )as num).toDouble(),
+      allocatedPoints: ((json['allocatedPoints'] ?? 0) as num).toInt()
+    );
   }
 
   Map<String, dynamic> toJson() => {
