@@ -1,5 +1,5 @@
 class Shop {
-  final String? id;
+  final int? id;
   final String status;
   final String displayName;
   final String address;
@@ -17,7 +17,7 @@ class Shop {
 
   factory Shop.fromJson(Map<String, dynamic> json) {
     return Shop(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       status: json['status'] as String,
       displayName: json['displayName'] as String,
       address: json['address'] as String, 
@@ -26,17 +26,19 @@ class Shop {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'status': status,
-    'displayName': displayName,
-    'address': address,
-    'funds': funds,
-    'allocatedPoints': allocatedPoints
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      if (id != null) 'id': id, // if id, use. else, no id yet, so let db create.
+      'status': status,
+      'displayName': displayName,
+      'address': address,
+      'funds': funds,
+      'allocatedPoints': allocatedPoints,
+    };
+  }
 
   Shop copyWith({
-    String? id,
+    int? id,
     String? status,
     String? displayName,
     String? address,
