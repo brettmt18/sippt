@@ -2,3 +2,6 @@ name: sippt
 description: City explorer
 environment:
   sdk: '>=3.0.0 <4.0.0'
+dependencies:
+  supabase: ^2.0.0
+  dotenv: ^4.2.0
